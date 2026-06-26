@@ -79,8 +79,7 @@ export const siteConfig = {
   },
 
   social: {
-    instagram: "https://instagram.com/",
-    pinterest: "https://pinterest.com/",
+    facebook: "https://www.facebook.com/profile.php?id=61578053159716",
   },
 
   /**

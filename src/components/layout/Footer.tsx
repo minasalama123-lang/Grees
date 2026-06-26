@@ -61,26 +61,26 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="text-ink transition-colors hover:text-brass"
               >
-                WhatsApp
+                WhatsApp: {contact.phone}
               </a>
             </p>
           </address>
           <div className="mt-4 flex gap-5">
             <a
-              href={social.instagram}
+              href={social.facebook}
               className="font-sans text-xs uppercase tracking-luxe text-ink hover:text-brass"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Instagram
+              Facebook
             </a>
             <a
-              href={social.pinterest}
+              href={contact.whatsapp}
               className="font-sans text-xs uppercase tracking-luxe text-ink hover:text-brass"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Pinterest
+              WhatsApp
             </a>
           </div>
         </div>

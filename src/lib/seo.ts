@@ -68,8 +68,7 @@ export function organizationJsonLd() {
     description: siteConfig.description,
     email: siteConfig.contact.email,
     telephone: siteConfig.contact.phone,
-    // Real brand social profiles (update the placeholder URLs in site.ts).
-    sameAs: [siteConfig.social.instagram, siteConfig.social.pinterest],
+    sameAs: [siteConfig.social.facebook],
     address: {
       "@type": "PostalAddress",
       streetAddress: siteConfig.contact.address.line1,

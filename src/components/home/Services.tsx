@@ -33,7 +33,7 @@ export function Services() {
           />
         </Reveal>
 
-        <div className="mx-auto mt-12 grid max-w-5xl grid-cols-1 gap-12 md:grid-cols-2 md:gap-16">
+        <div className="mx-auto mt-12 grid max-w-6xl grid-cols-1 gap-16 md:grid-cols-2 md:gap-32">
           <ServiceCard
             title="Customize"
             description="Made to your measurements, materials and finish. Tell us how you live and we’ll design a piece that fits your space — and your life — exactly."

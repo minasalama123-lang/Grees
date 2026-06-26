@@ -2,7 +2,7 @@ import { siteConfig } from "@/config/site";
 
 /** Business contact details: address, phone, email, WhatsApp, hours. */
 export function ContactInfo() {
-  const { contact } = siteConfig;
+  const { contact, social } = siteConfig;
 
   return (
     <div className="space-y-8">
@@ -32,7 +32,17 @@ export function ContactInfo() {
             rel="noopener noreferrer"
             className="text-ink hover:text-brass"
           >
-            Message on WhatsApp
+            WhatsApp: {contact.phone}
+          </a>
+        </p>
+        <p>
+          <a
+            href={social.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-ink hover:text-brass"
+          >
+            Facebook
           </a>
         </p>
       </Block>

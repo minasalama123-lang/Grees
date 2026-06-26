@@ -22,11 +22,11 @@ export function Hero() {
         sizes="100vw"
         className="object-cover object-center"
       />
-      {/* Darken the left third where the copy sits so the headline and both
-          buttons stay legible regardless of how light the photo is.
-          pointer-events-none: these are decorative scrims and must never
-          intercept clicks meant for the buttons beneath the cursor. */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink/75 via-ink/35 to-ink/5" />
+      {/* Scrim for legible copy. On mobile the narrow screen would be almost
+          entirely covered by a left→right gradient (hiding the photo), so we use
+          a gentle vertical scrim there and switch to the left gradient at md+.
+          pointer-events-none: decorative only — never intercept button clicks. */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/40 to-ink/25 md:bg-gradient-to-r md:from-ink/75 md:via-ink/35 md:to-ink/5" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/30 to-transparent" />
       {/* Top scrim across the full width so the transparent header's white
           wordmark and nav links stay readable even over the bright right side
