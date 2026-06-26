@@ -14,23 +14,26 @@ export function Hero() {
           sharing a warm, candid moment at home; the airy left side is kept clear
           for the copy overlay. */}
       <Image
-        src="/images/hero/family-hero.jpg"
-        alt="A father and his young daughter sharing a tender, playful moment together at home"
+        src="/Hero.jpeg"
+        alt="A relaxed editorial scene of a person lounging on a Grees& sofa"
         fill
         priority
+        quality={90}
         sizes="100vw"
-        className="object-cover object-right md:object-center"
+        className="object-cover object-center"
       />
       {/* Darken the left third where the copy sits so the headline and both
-          buttons stay legible regardless of how light the photo is. */}
-      <div className="absolute inset-0 bg-gradient-to-r from-ink/75 via-ink/35 to-ink/5" />
-      <div className="absolute inset-0 bg-gradient-to-t from-ink/30 to-transparent" />
+          buttons stay legible regardless of how light the photo is.
+          pointer-events-none: these are decorative scrims and must never
+          intercept clicks meant for the buttons beneath the cursor. */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink/75 via-ink/35 to-ink/5" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/30 to-transparent" />
       {/* Top scrim across the full width so the transparent header's white
           wordmark and nav links stay readable even over the bright right side
           of the photo. */}
-      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-ink/55 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-ink/55 to-transparent" />
 
-      <div className="absolute inset-0 flex items-center">
+      <div className="absolute inset-0 z-10 flex items-center">
         <div className="mx-auto w-full max-w-content px-6 md:px-10">
           <div className="max-w-xl animate-fade-up">
             <p className="font-sans text-xs uppercase tracking-luxe text-bone/80">

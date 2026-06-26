@@ -7,8 +7,8 @@
  * the site still renders during local development without a .env file.
  */
 
-const phone = process.env.NEXT_PUBLIC_CONTACT_PHONE ?? "+20 155 533 2354";
-const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "201555332354";
+const phone = process.env.NEXT_PUBLIC_CONTACT_PHONE ?? "+20 150 895 8733";
+const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "201508958733";
 
 export const siteConfig = {
   name: "Grees",
@@ -16,10 +16,50 @@ export const siteConfig = {
   legalName: "Grees Furniture Solutions",
   tagline: "Furniture for a Life Well Lived",
   description:
-    "Handcrafted furniture made for the moments that matter — gathering, resting, growing together. Timeless pieces for the living room, bedroom and dining room, built to be part of your family's story for years to come.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.minasalama.com",
+    "Handcrafted furniture for the moments that matter — sofas, sectionals, beds and TV units, designed and made to be part of your family's story for years to come.",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://grees-and.vercel.app",
   locale: "en",
   ogImage: "/images/sofas/cloud-1.webp",
+
+  /**
+   * Search keywords, bilingual (English + Arabic) so the brand surfaces for the
+   * furniture terms buyers in Egypt actually search — in either language.
+   */
+  keywords: [
+    "furniture",
+    "أثاث",
+    "modern furniture",
+    "أثاث مودرن",
+    "luxury furniture",
+    "أثاث فاخر",
+    "custom furniture",
+    "تفصيل أثاث",
+    "furniture finishes",
+    "تشطيبات",
+    "sofas",
+    "كنب",
+    "كنبة",
+    "sectional sofa",
+    "ركنة",
+    "ركنات",
+    "beds",
+    "سرير",
+    "سراير",
+    "upholstered bed",
+    "TV unit",
+    "مكتبة تلفزيون",
+    "reupholstery",
+    "تنجيد",
+    "تجديد أثاث",
+    "furniture Egypt",
+    "أثاث مصر",
+    "furniture Cairo",
+    "أثاث القاهرة",
+    "Sheikh Zayed",
+    "New Cairo",
+    "Sahel",
+    "Grees",
+  ],
 
   contact: {
     email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "minasalama123@gmail.com",
@@ -52,7 +92,7 @@ export const siteConfig = {
     { label: "Home", href: "/" },
     { label: "Collections", href: "/#collections" },
     { label: "Projects", href: "/#work" },
-    { label: "About", href: "/about" },
+    { label: "Our Story", href: "/about" },
     { label: "Contact", href: "/#contact" },
   ],
 } as const;

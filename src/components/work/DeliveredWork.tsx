@@ -22,8 +22,13 @@ const deliveredLocations: LocationCardData[] = [
     location: "New Cairo",
     images: [
       { src: "/images/delivered/grey-modular-sectional.jpg", alt: "A large grey modular sectional sofa delivered in New Cairo" },
-      { src: "/images/delivered/walnut-dining-bench.jpg", alt: "A live-edge walnut dining table with a matching bench delivered in New Cairo" },
       { src: "/images/delivered/walnut-vanity-bedroom.jpg", alt: "A floating walnut dressing table with an arched mirror delivered in New Cairo" },
+    ],
+  },
+  {
+    location: "Sahel",
+    images: [
+      { src: "/images/delivered/walnut-dining-bench.jpg", alt: "A live-edge walnut dining table with a matching bench, overlooking the water at a Sahel home" },
     ],
   },
 ];
@@ -44,9 +49,7 @@ export function DeliveredWork({ id, className }: DeliveredWorkProps) {
         <Reveal>
           <SectionHeading title="Pieces already in clients' homes" />
         </Reveal>
-        {/* Centered, capped width so the (currently two) cards stay balanced
-            instead of clinging to the left of a 3-up grid. */}
-        <div className="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-14">
+        <div className="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12">
           {deliveredLocations.map((loc, i) => (
             <Reveal key={loc.location} as="div" delay={(i % 3) * 80}>
               {/* Stagger each card's image timing by 500ms so they never flip

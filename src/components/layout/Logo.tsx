@@ -26,7 +26,7 @@ export function Logo({
       <span
         className={cn(
           "flex items-baseline font-serif tracking-tight",
-          size === "lg" ? "text-3xl md:text-4xl" : "text-2xl",
+          size === "lg" ? "text-4xl md:text-5xl" : "text-2xl",
         )}
       >
         <span className={light ? "text-bone" : "text-navy"}>Grees</span>

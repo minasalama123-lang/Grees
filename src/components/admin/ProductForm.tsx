@@ -22,6 +22,7 @@ type Draft = {
   collection: string;
   isFeatured: boolean;
   isNew: boolean;
+  price: string;
   width: string;
   depth: string;
   height: string;
@@ -41,6 +42,7 @@ function toDraft(p: Product | null): Draft {
     collection: p?.collection ?? "",
     isFeatured: p?.isFeatured ?? false,
     isNew: p?.isNew ?? false,
+    price: p?.price ? String(p.price) : "",
     width: p ? String(p.dimensions.width) : "",
     depth: p ? String(p.dimensions.depth) : "",
     height: p ? String(p.dimensions.height) : "",
@@ -120,6 +122,7 @@ export function ProductForm({
       summary: draft.summary,
       description: draft.description,
       collection: draft.collection,
+      price: draft.price,
       isFeatured: draft.isFeatured,
       isNew: draft.isNew,
       dimensions: {
@@ -211,6 +214,14 @@ export function ProductForm({
 
       <div className="grid gap-4 sm:grid-cols-2">
         <Text label="Collection (optional)" value={draft.collection} onChange={(v) => set("collection", v)} />
+        <Text
+          label="Price in EGP (optional)"
+          value={draft.price}
+          onChange={(v) => set("price", v)}
+          error={errors.price}
+          type="number"
+          hint="Leave blank for “Price on request”"
+        />
         <div className="flex items-end gap-6">
           <Checkbox label="Featured" checked={draft.isFeatured} onChange={(v) => set("isFeatured", v)} />
           <Checkbox label="New" checked={draft.isNew} onChange={(v) => set("isNew", v)} />

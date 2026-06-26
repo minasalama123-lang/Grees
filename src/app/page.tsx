@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import {
   getCategoriesWithCounts,
   getFeaturedProducts,
@@ -13,6 +14,12 @@ import { Services } from "@/components/home/Services";
 import { AboutTeaser } from "@/components/home/AboutTeaser";
 import { ContactTeaser } from "@/components/home/ContactTeaser";
 import { DeliveredWork } from "@/components/work/DeliveredWork";
+
+// Self-referential canonical for the home page (other pages set their own via
+// buildMetadata). Title/description/OG are inherited from the root layout.
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 // Safety net: regenerate at most every 5 minutes even if a path-level
 // revalidation is ever missed. On-demand revalidatePath keeps it instant.
@@ -35,7 +42,7 @@ export default async function HomePage() {
       {/* Categories */}
       <Container as="section" id="collections" className="scroll-mt-24 py-24">
         <Reveal>
-          <SectionHeading eyebrow="Collections" title="Explore by room" />
+          <SectionHeading eyebrow="Collections" title="Explore by type" />
         </Reveal>
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {categories.map((category, i) => (

@@ -61,7 +61,7 @@ export function ProductGallery({
         type="button"
         onClick={() => setLightbox(true)}
         aria-label={`Zoom in on ${productName}`}
-        className="group relative block aspect-[4/3] w-full cursor-zoom-in overflow-hidden bg-bone focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass"
+        className="group relative block aspect-[4/3] w-full cursor-zoom-in overflow-hidden bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass"
       >
         <Image
           key={active.src}
@@ -91,7 +91,7 @@ export function ProductGallery({
                 aria-current={i === activeIndex ? "true" : undefined}
                 aria-label={`View image ${i + 1}: ${image.alt}`}
                 className={cn(
-                  "relative block aspect-square w-full overflow-hidden bg-bone transition-opacity duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass",
+                  "relative block aspect-square w-full overflow-hidden bg-white transition-opacity duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass",
                   i === activeIndex
                     ? "ring-1 ring-ink ring-offset-2 ring-offset-bone"
                     : "opacity-70 hover:opacity-100",

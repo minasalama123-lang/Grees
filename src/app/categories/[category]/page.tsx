@@ -6,7 +6,7 @@ import {
   getCategoryBySlug,
   getProductsByCategory,
 } from "@/lib/catalog";
-import { buildMetadata } from "@/lib/seo";
+import { breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/catalog/PageHeader";
 import { CategoryProducts } from "@/components/catalog/CategoryProducts";
@@ -31,7 +31,7 @@ export async function generateMetadata({
   if (!category) return {};
 
   return buildMetadata({
-    title: category.name,
+    title: `${category.name} — ${category.tagline}`,
     description: category.description,
     path: `/categories/${category.slug}`,
     image: category.cover.src,
@@ -50,6 +50,19 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger -- trusted, server-generated JSON-LD
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbJsonLd([
+              { name: "Home", url: "/" },
+              { name: "Collections", url: "/categories" },
+              { name: category.name, url: `/categories/${category.slug}` },
+            ]),
+          ),
+        }}
+      />
       <PageHeader
         eyebrow="Collection"
         title={category.name}

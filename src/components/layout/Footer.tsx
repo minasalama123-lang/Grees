@@ -56,10 +56,12 @@ export function Footer() {
             </p>
             <p>
               <a
-                href={`tel:${contact.phone.replace(/\s+/g, "")}`}
+                href={contact.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-ink transition-colors hover:text-brass"
               >
-                {contact.phone}
+                WhatsApp
               </a>
             </p>
           </address>

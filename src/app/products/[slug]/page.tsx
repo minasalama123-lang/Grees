@@ -3,13 +3,19 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   formatDimensions,
+  formatPrice,
   getCategoryBySlug,
   getCoverImage,
   getProductBySlug,
   getProducts,
   getProductsByCategory,
 } from "@/lib/catalog";
-import { buildMetadata, productJsonLd } from "@/lib/seo";
+import {
+  breadcrumbJsonLd,
+  buildMetadata,
+  clampText,
+  productJsonLd,
+} from "@/lib/seo";
 import { siteConfig } from "@/config/site";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
@@ -37,7 +43,8 @@ export async function generateMetadata({
 
   return buildMetadata({
     title: product.name,
-    description: product.summary,
+    // Richer than the one-line summary, clamped to a meta-friendly length.
+    description: clampText(`${product.summary} ${product.description}`),
     path: `/products/${product.slug}`,
     image: getCoverImage(product).src,
   });
@@ -62,6 +69,27 @@ export default async function ProductPage({ params }: ProductPageProps) {
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger -- trusted, server-generated JSON-LD
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd(product)) }}
+      />
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger -- trusted, server-generated JSON-LD
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbJsonLd([
+              { name: "Home", url: "/" },
+              { name: "Collections", url: "/categories" },
+              ...(category
+                ? [
+                    {
+                      name: category.name,
+                      url: `/categories/${category.slug}`,
+                    },
+                  ]
+                : []),
+              { name: product.name, url: `/products/${product.slug}` },
+            ]),
+          ),
+        }}
       />
 
       <Container className="pt-32 md:pt-40">
@@ -105,6 +133,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <h1 className="mt-2 font-serif text-4xl font-light leading-tight text-ink md:text-5xl">
               {product.name}
             </h1>
+            <p className="mt-4 font-sans text-2xl font-light text-brass">
+              {formatPrice(product.price)}
+            </p>
             <p className="mt-6 font-sans text-lg leading-relaxed text-clay">
               {product.description}
             </p>

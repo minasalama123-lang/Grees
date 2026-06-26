@@ -33,6 +33,8 @@ create table if not exists public.products (
   -- { width, depth, height, seatHeight?, unit }.
   dimensions       jsonb not null default '{}'::jsonb,
   collection       text,
+  -- Price in EGP. Null → shown as "Price on request".
+  price            numeric,
   is_featured      boolean not null default false,
   is_new           boolean not null default false,
   created_at       timestamptz not null default now(),

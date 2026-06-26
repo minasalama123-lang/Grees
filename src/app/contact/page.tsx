@@ -8,9 +8,9 @@ import { ContactInfo } from "@/components/contact/ContactInfo";
 import { MapEmbed } from "@/components/contact/MapEmbed";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Contact",
+  title: "Contact & Showroom Visit",
   description:
-    "Inquire about a piece, arrange an atelier visit, or ask about bespoke commissions.",
+    "Get in touch with Grees& — ask about a piece, arrange a showroom visit, or request custom furniture. Reach us on WhatsApp or by email and we reply personally.",
   path: "/contact",
 });
 

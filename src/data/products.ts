@@ -50,6 +50,7 @@ export const products: Product[] = [
     ],
     dimensions: { width: 240, depth: 105, height: 85, seatHeight: 45, unit: "cm" },
     collection: "Signature",
+    price: 55000,
     isFeatured: true,
   },
   {
@@ -72,6 +73,7 @@ export const products: Product[] = [
     ],
     dimensions: { width: 230, depth: 98, height: 82, seatHeight: 46, unit: "cm" },
     collection: "Atelier",
+    price: 48000,
     isNew: true,
   },
   {
@@ -94,6 +96,7 @@ export const products: Product[] = [
     ],
     dimensions: { width: 250, depth: 115, height: 78, seatHeight: 42, unit: "cm" },
     collection: "Signature",
+    price: 62000,
     isNew: true,
   },
   {
@@ -116,6 +119,7 @@ export const products: Product[] = [
     ],
     dimensions: { width: 230, depth: 95, height: 78, seatHeight: 44, unit: "cm" },
     collection: "Atelier",
+    price: 52000,
     isNew: true,
   },
 
@@ -129,9 +133,9 @@ export const products: Product[] = [
     description:
       "Rivera is a true centrepiece — a large modular U-shape that can be arranged to fit your room, with plush seats and a soft beige weave. Built in sections, it adapts as your space changes.",
     images: [
-      img(`${SEC}/rivera-1.webp`, "Rivera beige U-shaped modular sectional, top view", 1200, 800),
-      img(`${SEC}/rivera-2.jpg`, "Rivera U-sectional styled in a living room", 1200, 800),
-      img(`${SEC}/rivera-3.webp`, "Rivera U-sectional, detail", 1200, 800),
+      img(`${SEC}/rivera-3.webp`, "Rivera beige U-shaped modular sectional, front view", 1200, 800),
+      img(`${SEC}/rivera-1.webp`, "Rivera U-sectional, top view", 1200, 800),
+      img(`${SEC}/rivera-2.jpg`, "Rivera U-sectional, corner view", 1200, 800),
     ],
     materials: [
       { name: "Soft beige weave" },
@@ -140,6 +144,7 @@ export const products: Product[] = [
     ],
     dimensions: { width: 360, depth: 280, height: 85, seatHeight: 45, unit: "cm" },
     collection: "Signature",
+    price: 120000,
   },
   {
     slug: "cosmo-modular-sectional",
@@ -159,6 +164,7 @@ export const products: Product[] = [
     ],
     dimensions: { width: 340, depth: 170, height: 70, seatHeight: 42, unit: "cm" },
     collection: "Atelier",
+    price: 98000,
   },
   {
     slug: "marlow-sectional",
@@ -169,9 +175,9 @@ export const products: Product[] = [
     description:
       "Marlow is built for slow afternoons — a low seat, extra depth, and a soft tailored slipcover that lifts off completely for cleaning. Scatter cushions in the same cloth complete an easy, understated look.",
     images: [
-      img(`${SEC}/marlow-1.webp`, "Marlow slipcover lounge sectional in cream, front view"),
+      img(`${SEC}/marlow-3.webp`, "Marlow slipcover lounge sectional in cream, front view"),
+      img(`${SEC}/marlow-1.webp`, "Marlow lounge sectional, corner detail"),
       img(`${SEC}/marlow-2.webp`, "Marlow lounge sectional, wide view"),
-      img(`${SEC}/marlow-3.webp`, "Marlow lounge sectional, detail"),
     ],
     materials: [
       { name: "Removable washable slipcover" },
@@ -179,6 +185,7 @@ export const products: Product[] = [
     ],
     dimensions: { width: 300, depth: 120, height: 78, seatHeight: 42, unit: "cm" },
     collection: "Atelier",
+    price: 90000,
   },
   {
     slug: "cascade-sectional",
@@ -200,6 +207,7 @@ export const products: Product[] = [
     ],
     dimensions: { width: 330, depth: 180, height: 72, seatHeight: 42, unit: "cm" },
     collection: "Signature",
+    price: 110000,
     isFeatured: true,
   },
 
@@ -225,6 +233,7 @@ export const products: Product[] = [
     ],
     dimensions: { width: 196, depth: 215, height: 110, unit: "cm" },
     collection: "Signature",
+    price: 42000,
     isNew: true,
   },
   {
@@ -249,6 +258,7 @@ export const products: Product[] = [
     ],
     dimensions: { width: 196, depth: 215, height: 100, unit: "cm" },
     collection: "Signature",
+    price: 45000,
     isFeatured: true,
   },
   {
@@ -271,6 +281,7 @@ export const products: Product[] = [
     ],
     dimensions: { width: 196, depth: 215, height: 105, unit: "cm" },
     collection: "Atelier",
+    price: 38000,
     isNew: true,
   },
 
@@ -295,6 +306,7 @@ export const products: Product[] = [
     ],
     dimensions: { width: 240, depth: 45, height: 40, unit: "cm" },
     collection: "Atelier",
+    price: 28000,
     isNew: true,
   },
 ];

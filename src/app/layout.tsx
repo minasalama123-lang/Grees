@@ -27,22 +27,18 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
     default: `${siteConfig.name} — ${siteConfig.tagline}`,
-    template: `%s · ${siteConfig.name}`,
+    // "Furniture" appears in every page title for search relevance.
+    template: `%s · ${siteConfig.name} Furniture`,
   },
   description: siteConfig.description,
-  keywords: [
-    "luxury furniture",
-    "handcrafted furniture",
-    "bespoke furniture",
-    siteConfig.name,
-  ],
+  keywords: [...siteConfig.keywords],
   openGraph: {
     type: "website",
     siteName: siteConfig.name,
     title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: siteConfig.description,
     url: siteConfig.url,
-    images: [{ url: siteConfig.ogImage }],
+    // OG image comes from app/opengraph-image.tsx (1200×630, file convention).
   },
   twitter: { card: "summary_large_image" },
   robots: { index: true, follow: true },

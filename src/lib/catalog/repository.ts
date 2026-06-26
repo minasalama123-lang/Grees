@@ -34,6 +34,7 @@ type ProductRow = {
   materials: Product["materials"];
   dimensions: Product["dimensions"];
   collection: string | null;
+  price: number | null;
   is_featured: boolean;
   is_new: boolean;
 };
@@ -50,6 +51,7 @@ function rowToProduct(r: ProductRow): Product {
     materials: r.materials ?? [],
     dimensions: r.dimensions,
     collection: r.collection ?? undefined,
+    price: r.price ?? undefined,
     isFeatured: r.is_featured,
     isNew: r.is_new,
   };
@@ -67,6 +69,7 @@ function productToRow(p: Product): ProductRow {
     materials: p.materials,
     dimensions: p.dimensions,
     collection: p.collection ?? null,
+    price: p.price ?? null,
     is_featured: Boolean(p.isFeatured),
     is_new: Boolean(p.isNew),
   };
@@ -84,7 +87,7 @@ async function allProducts(): Promise<Product[]> {
   const { data, error } = await db
     .from("products")
     .select(
-      "slug, name, category_slug, subcategory_slug, summary, description, images, materials, dimensions, collection, is_featured, is_new",
+      "slug, name, category_slug, subcategory_slug, summary, description, images, materials, dimensions, collection, price, is_featured, is_new",
     )
     .order("created_at", { ascending: false });
 

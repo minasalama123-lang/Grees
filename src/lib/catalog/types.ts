@@ -51,6 +51,12 @@ export interface Category {
   tagline: string;
   description: string;
   cover: CatalogImage;
+  /**
+   * How the cover image fills its tile. "cover" (default) for full-bleed room
+   * photos; "contain" for product renders on a white ground so the whole piece
+   * shows without cropping.
+   */
+  coverFit?: "cover" | "contain";
   subcategories: Subcategory[];
   /** Lower numbers appear first in grids. */
   order: number;
@@ -74,6 +80,8 @@ export interface Product {
   dimensions: Dimensions;
   /** Optional designer / collection attribution. */
   collection?: string;
+  /** Price in EGP. Omitted → shown as "Price on request". */
+  price?: number;
   /** Curated flags used for the home page rails. */
   isFeatured?: boolean;
   isNew?: boolean;

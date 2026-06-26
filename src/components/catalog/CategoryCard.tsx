@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { CategoryWithCount } from "@/lib/catalog";
+import { cn } from "@/lib/utils";
 
 interface CategoryCardProps {
   category: CategoryWithCount;
@@ -12,12 +13,15 @@ interface CategoryCardProps {
  * count. Links to the category page.
  */
 export function CategoryCard({ category, priority = false }: CategoryCardProps) {
+  // Product renders sit on a white ground → contain them on white so the whole
+  // piece shows. Room photos fill the tile.
+  const contain = category.coverFit === "contain";
   return (
     <Link
       href={`/categories/${category.slug}`}
       className="group relative block overflow-hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass"
     >
-      <div className="relative aspect-[4/3] bg-bone">
+      <div className={cn("relative aspect-[4/3]", contain ? "bg-white" : "bg-bone")}>
         <Image
           src={category.cover.src}
           alt={category.cover.alt}
@@ -25,7 +29,10 @@ export function CategoryCard({ category, priority = false }: CategoryCardProps) 
           quality={90}
           sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 90vw"
           priority={priority}
-          className="object-contain transition-transform duration-700 ease-luxe group-hover:scale-105"
+          className={cn(
+            "transition-transform duration-700 ease-luxe group-hover:scale-105",
+            contain ? "object-contain" : "object-cover",
+          )}
         />
         {/* Gradient scrim keeps the overlaid text readable over the image. */}
         <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent" />

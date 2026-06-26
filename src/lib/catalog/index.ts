@@ -25,4 +25,4 @@ export {
 
 // Pure, client-safe helpers live in ./format so they can be imported without
 // pulling the server-only repository into a client bundle.
-export { formatDimensions, getCoverImage } from "./format";
+export { formatDimensions, getCoverImage, formatPrice } from "./format";

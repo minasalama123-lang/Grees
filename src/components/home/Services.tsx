@@ -1,8 +1,8 @@
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/motion/Reveal";
 import { FadeSlideshow } from "@/components/ui/FadeSlideshow";
+import { ScrollButton } from "@/components/ui/ScrollButton";
 
 /**
  * Services band: the two things we do beyond selling finished pieces —
@@ -33,7 +33,7 @@ export function Services() {
           />
         </Reveal>
 
-        <div className="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-10 md:grid-cols-2 md:gap-14">
+        <div className="mx-auto mt-12 grid max-w-5xl grid-cols-1 gap-12 md:grid-cols-2 md:gap-16">
           <ServiceCard
             title="Customize"
             description="Made to your measurements, materials and finish. Tell us how you live and we’ll design a piece that fits your space — and your life — exactly."
@@ -49,9 +49,9 @@ export function Services() {
         </div>
 
         <div className="mt-12 text-center">
-          <Button href="#contact" variant="outline">
+          <ScrollButton targetId="contact" variant="outline">
             Talk to Us About Your Project
-          </Button>
+          </ScrollButton>
         </div>
       </Container>
     </div>

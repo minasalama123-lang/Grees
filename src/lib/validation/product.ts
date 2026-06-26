@@ -62,6 +62,11 @@ export const productSchema = z.object({
   ),
   dimensions: dimensionsSchema,
   collection: z.string().trim().max(120).optional().or(z.literal("")),
+  // Price in EGP. Empty input is allowed → "Price on request".
+  price: z.preprocess(
+    (v) => (v === "" || v == null ? undefined : v),
+    z.coerce.number().nonnegative().max(100_000_000).optional(),
+  ),
   isFeatured: z.coerce.boolean().default(false),
   isNew: z.coerce.boolean().default(false),
 });
@@ -89,6 +94,7 @@ function toProduct(data: ProductInput): Product {
       })),
     dimensions: data.dimensions,
     ...(data.collection ? { collection: data.collection } : {}),
+    ...(data.price != null ? { price: data.price } : {}),
     isFeatured: data.isFeatured,
     isNew: data.isNew,
   };

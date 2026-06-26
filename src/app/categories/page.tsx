@@ -7,9 +7,9 @@ import { CategoryCard } from "@/components/catalog/CategoryCard";
 import { Reveal } from "@/components/motion/Reveal";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Collections",
+  title: "Sofas, Sectionals, Beds & TV Units",
   description:
-    "Browse our luxury furniture collections by room — living, bedroom, dining, office and outdoor.",
+    "Browse Grees& furniture by type — sofas, sectionals, beds and TV units, handcrafted and made to order for homes across Egypt. كنب، سراير، سكشنال ومكتبات تلفزيون.",
   path: "/categories",
 });
 
@@ -22,7 +22,7 @@ export default async function CategoriesPage() {
     <>
       <PageHeader
         eyebrow="Collections"
-        title="Furniture, by room"
+        title="Explore by type"
         description="Five collections, each composed for a particular way of living. Choose a room to explore the pieces within."
       />
       <Container className="pb-24">

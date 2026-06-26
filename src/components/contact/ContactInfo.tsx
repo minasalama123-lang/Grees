@@ -3,7 +3,6 @@ import { siteConfig } from "@/config/site";
 /** Business contact details: address, phone, email, WhatsApp, hours. */
 export function ContactInfo() {
   const { contact } = siteConfig;
-  const telHref = `tel:${contact.phone.replace(/\s+/g, "")}`;
 
   return (
     <div className="space-y-8">
@@ -18,11 +17,6 @@ export function ContactInfo() {
       </Block>
 
       <Block label="Speak with us">
-        <p>
-          <a href={telHref} className="text-ink hover:text-brass">
-            {contact.phone}
-          </a>
-        </p>
         <p>
           <a
             href={`mailto:${contact.email}`}

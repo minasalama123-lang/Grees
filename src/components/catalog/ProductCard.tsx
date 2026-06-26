@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Product } from "@/lib/catalog/types";
-import { getCoverImage } from "@/lib/catalog/format";
+import { formatPrice, getCoverImage } from "@/lib/catalog/format";
 
 interface ProductCardProps {
   product: Product;
@@ -23,7 +23,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
         href={`/products/${product.slug}`}
         className="block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass"
       >
-        <div className="relative aspect-[4/3] overflow-hidden bg-bone">
+        <div className="relative aspect-[4/3] overflow-hidden bg-white">
           <Image
             src={cover.src}
             alt={cover.alt}
@@ -51,6 +51,9 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
           </h3>
           <p className="mt-1 font-sans text-base leading-relaxed text-clay">
             {product.summary}
+          </p>
+          <p className="mt-2 font-sans text-sm text-brass">
+            {formatPrice(product.price)}
           </p>
         </div>
       </Link>
