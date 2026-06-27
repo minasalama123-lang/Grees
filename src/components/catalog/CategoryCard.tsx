@@ -19,7 +19,7 @@ export function CategoryCard({ category, priority = false }: CategoryCardProps) 
   return (
     <Link
       href={`/categories/${category.slug}`}
-      className="group relative block overflow-hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass"
+      className="group relative block overflow-hidden transition-[transform,box-shadow] duration-300 ease-luxe hover:-translate-y-1 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass"
     >
       <div className={cn("relative aspect-[4/3]", contain ? "bg-white" : "bg-bone")}>
         <Image

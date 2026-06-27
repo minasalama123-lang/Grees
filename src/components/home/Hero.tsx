@@ -10,17 +10,29 @@ import { siteConfig } from "@/config/site";
 export function Hero() {
   return (
     <section className="relative h-[92vh] min-h-[600px] w-full">
-      {/* Lifestyle hero — the experience, not the product. A father and daughter
-          sharing a warm, candid moment at home; the airy left side is kept clear
-          for the copy overlay. */}
+      {/* Art-directed hero. A single wide photo gets brutally cropped in a tall
+          phone viewport, so we serve two compositions of the same styled scene:
+          a portrait crop on mobile and the wide editorial shot from md+. Each
+          device only ever renders one (the other is display:none), and
+          next/image still serves a viewport-sized, modern-format variant of
+          whichever shows — so no full-size double download. */}
       <Image
-        src="/Hero.jpeg"
-        alt="A relaxed editorial scene of a person lounging on a Grees& sofa"
+        src="/Hero-mobile.jpg"
+        alt="A Grees& emerald velvet sofa styled in a calm, light-filled room"
         fill
         priority
         quality={90}
         sizes="100vw"
-        className="object-cover object-center"
+        className="object-cover object-center md:hidden"
+      />
+      <Image
+        src="/Hero.jpeg"
+        alt="A Grees& emerald velvet sofa styled in a calm, light-filled room"
+        fill
+        priority
+        quality={90}
+        sizes="100vw"
+        className="hidden object-cover object-center md:block"
       />
       {/* Scrim for legible copy. On mobile the narrow screen would be almost
           entirely covered by a left→right gradient (hiding the photo), so we use
@@ -35,7 +47,7 @@ export function Hero() {
 
       <div className="absolute inset-0 z-10 flex items-center">
         <div className="mx-auto w-full max-w-content px-6 md:px-10">
-          <div className="max-w-xl animate-fade-up">
+          <div className="max-w-xl hero-rise">
             <p className="font-sans text-xs uppercase tracking-luxe text-bone/80">
               Made for the moments that matter
             </p>

@@ -18,12 +18,12 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
   const cover = getCoverImage(product);
 
   return (
-    <article className="group">
+    <article className="group transition-transform duration-300 ease-luxe hover:-translate-y-1">
       <Link
         href={`/products/${product.slug}`}
         className="block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass"
       >
-        <div className="relative aspect-[4/3] overflow-hidden bg-white">
+        <div className="relative aspect-[4/3] overflow-hidden bg-white shadow-sm transition-shadow duration-300 group-hover:shadow-xl">
           <Image
             src={cover.src}
             alt={cover.alt}

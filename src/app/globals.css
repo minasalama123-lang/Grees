@@ -43,4 +43,65 @@
   .skip-link:focus {
     @apply not-sr-only fixed left-4 top-4 z-[100] bg-ink px-4 py-2 text-bone;
   }
+
+  /* Smooth, subtle motion on interactive elements. Tailwind transition
+     utilities override this where a component sets its own. */
+  a,
+  button {
+    transition-property: color, background-color, border-color, opacity,
+      transform, box-shadow;
+    transition-duration: 200ms;
+    transition-timing-function: ease;
+  }
+
+  /* Shared gentle fade + rise, reused by the hero (on load) and scroll reveal
+     (on enter). */
+  @keyframes grees-rise {
+    from {
+      opacity: 0;
+      transform: translateY(1rem);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* HERO entrance on page load. Visible by default — the animation only runs
+     when motion is welcome. Keyframe animations work on every modern browser
+     (incl. iOS Safari), so this is safe. */
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-rise {
+      animation: grees-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+  }
+
+  /* SCROLL REVEAL — CSS only, NO JavaScript / IntersectionObserver.
+     `.reveal` is ALWAYS visible by default (opacity:1). Only browsers that
+     support scroll-driven animations get the subtle fade+rise as the element
+     scrolls into view; older Safari / iOS just show the content immediately.
+     Gated by prefers-reduced-motion AND @supports, so it can never be the
+     reason content is hidden. */
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .reveal {
+        animation: grees-rise 0.7s linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 55%;
+      }
+    }
+  }
+
+  /* Respect reduced-motion: kill non-essential animation/transition globally.
+     Content stays fully visible — motion is enhancement only. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }

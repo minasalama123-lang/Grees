@@ -99,7 +99,16 @@ export function Header() {
         "fixed inset-x-0 top-0 z-50 transition-colors duration-500 ease-luxe",
         scrolled || menuOpen
           ? "bg-bone/95 backdrop-blur supports-[backdrop-filter]:bg-bone/80"
-          : "bg-transparent",
+          : overHero
+            ? // Home, before scroll. JS turns this into the solid bone bar above
+              // once you scroll, but that depends on the scroll listener — so the
+              // *default* (and the only state a no-JS browser ever sees on the
+              // home page) must already give the white wordmark + nav enough
+              // contrast. A permanent top-down dark scrim, carried by the fixed
+              // header itself, keeps them readable over the hero AND over the
+              // light sections below it even when JS never runs.
+              "bg-gradient-to-b from-ink/80 via-ink/45 to-transparent"
+            : "bg-transparent",
       )}
     >
       <Container className="flex h-20 items-center justify-between">
