@@ -29,6 +29,8 @@ const deliveredLocations: LocationCardData[] = [
     location: "Sahel",
     images: [
       { src: "/images/delivered/walnut-dining-bench.jpg", alt: "A live-edge walnut dining table with a matching bench, overlooking the water at a Sahel home" },
+      { src: "/images/delivered/sahel-living-cream.jpg", alt: "A bright, airy living room with cream sofas, armchairs and greenery delivered to a Sahel home" },
+      { src: "/images/delivered/sahel-curved-sofa.jpg", alt: "A curved cream sofa with a glass coffee table on marble floors, delivered to a Sahel home" },
     ],
   },
 ];

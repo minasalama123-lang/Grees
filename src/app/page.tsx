@@ -47,7 +47,9 @@ export default async function HomePage() {
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {categories.map((category, i) => (
             <Reveal key={category.slug} as="div" delay={i * 80}>
-              <CategoryCard category={category} priority={i < 3} />
+              {/* Below the fold (after the hero + services) — let these lazy-load
+                  so they never compete with the hero LCP image's preload. */}
+              <CategoryCard category={category} />
             </Reveal>
           ))}
         </div>

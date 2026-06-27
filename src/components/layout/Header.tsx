@@ -21,39 +21,72 @@ export function Header() {
   // Only meaningful on the home page; cleared on every other route.
   const [activeSection, setActiveSection] = useState("");
 
+  // A SINGLE rAF-throttled scroll handler drives both the "scrolled" flag and
+  // the home-page scroll-spy. Crucially, section offsets are measured once (and
+  // again on resize/load) rather than on every scroll frame — so scrolling no
+  // longer forces a synchronous layout (`getBoundingClientRect`) per frame.
+  // That per-frame layout thrash, running while `scroll-behavior: smooth`
+  // animated a long anchor jump, is what made clicking a nav link stutter and
+  // briefly "freeze" before settling. setState is also guarded to fire only on
+  // an actual change, so the header re-renders at most once per state flip.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  // Scroll-spy for the home page's anchored sections (order matters: top→bottom).
-  useEffect(() => {
-    if (pathname !== "/") {
-      setActiveSection("");
-      return;
-    }
+    const isHome = pathname === "/";
     const ids = ["collections", "work", "contact"];
-    const onScroll = () => {
-      // A probe line a third of the way down the viewport. The last section
-      // whose top has passed it is the one we consider "current".
-      const probe = window.scrollY + window.innerHeight * 0.35;
-      let current = "";
-      for (const id of ids) {
-        const el = document.getElementById(id);
-        if (!el) continue;
-        const top = el.getBoundingClientRect().top + window.scrollY;
-        if (top <= probe) current = id;
-      }
-      setActiveSection(current);
+    let offsets: { id: string; top: number }[] = [];
+
+    const measure = () => {
+      offsets = isHome
+        ? ids
+            .map((id) => {
+              const el = document.getElementById(id);
+              return el
+                ? { id, top: el.getBoundingClientRect().top + window.scrollY }
+                : null;
+            })
+            .filter((o): o is { id: string; top: number } => o !== null)
+        : [];
     };
-    onScroll();
+
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const y = window.scrollY;
+      const nextScrolled = y > 24;
+      setScrolled((prev) => (prev === nextScrolled ? prev : nextScrolled));
+
+      // The last section whose top has passed a probe line 35% down the
+      // viewport is the current one ("" = top of page → Home). Pure arithmetic
+      // against cached offsets — no layout reads here.
+      let current = "";
+      if (isHome) {
+        const probe = y + window.innerHeight * 0.35;
+        for (const o of offsets) if (o.top <= probe) current = o.id;
+      }
+      setActiveSection((prev) => (prev === current ? prev : current));
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    };
+    const onResize = () => {
+      measure();
+      onScroll();
+    };
+
+    measure();
+    update();
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    window.addEventListener("resize", onResize);
+    // Re-measure once everything (fonts/images) has settled, in case late
+    // layout shifts moved the section offsets.
+    window.addEventListener("load", onResize);
     return () => {
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("resize", onResize);
+      window.removeEventListener("load", onResize);
     };
   }, [pathname]);
 
