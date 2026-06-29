@@ -17,8 +17,8 @@ export function Hero() {
           next/image still serves a viewport-sized, modern-format variant of
           whichever shows — so no full-size double download. */}
       <Image
-        src="/Hero-mobile.jpg"
-        alt="A Grees& emerald velvet sofa styled in a calm, light-filled room"
+        src="/hero-mina-shorts-mobile.webp"
+        alt="A man relaxing on a deep blue Grees& sofa"
         fill
         priority
         quality={90}
@@ -26,8 +26,8 @@ export function Hero() {
         className="object-cover object-center md:hidden"
       />
       <Image
-        src="/Hero.jpeg"
-        alt="A Grees& emerald velvet sofa styled in a calm, light-filled room"
+        src="/hero-mina-shorts.webp"
+        alt="A man relaxing on a deep blue Grees& sofa"
         fill
         priority
         quality={90}
